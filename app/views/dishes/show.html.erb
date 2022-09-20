@@ -1,4 +1,6 @@
-<h1><%= @dish.name %></h1>
-<h3><%= @dish.description %></h3>
-<%# <h3>Price: $<%= @item.unit_price%></h3> %>
-<%# <%= link_to "Update #{@item.name}", "/merchant/#{@item.merchant.id}/items/#{@item.id}/edit" %> %>
+<h1><%= @dish.chef.name %>'s <%= @dish.name %></h1><br>
+<h3><%= @dish.description %></h3><br><br>
+<strong>Ingredients</strong>
+<% @dish.ingredients.each do |ingredient| %>
+  <li><%= ingredient.name %></li>
+<% end %>
