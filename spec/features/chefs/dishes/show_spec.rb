@@ -20,7 +20,13 @@ RSpec.describe 'Dish Show' do
     expect(page).to have_content(@dish_1.name)
     expect(page).to have_content(@dish_1.description)
   end
-# And I see a list of ingredients for that dish
-# And I see the chef's name.
+
+  it "shows chef name and ingredients of dish" do
+    visit "/chef/#{@chef.id}/dishes/#{@dish_1.id}"
+
+    expect(page).to have_content(@chef.name)
+    expect(page).to have_content(@mac.name)
+    expect(page).to have_content(@cheese.name)
+  end
   
 end
