@@ -14,19 +14,29 @@ RSpec.describe 'Dish Show' do
     @dish_1_ingredient_2 = DishIngredient.create!(dish_id: @dish_1.id, ingredient_id: @cheese.id)
   end
 
-  it "shows attributes of dish" do
-    visit "/chef/#{@chef.id}/dishes/#{@dish_1.id}"
+  describe "user story 1" do
+    it "shows attributes of dish" do
+      visit "/chef/#{@chef.id}/dishes/#{@dish_1.id}"
 
-    expect(page).to have_content(@dish_1.name)
-    expect(page).to have_content(@dish_1.description)
+      expect(page).to have_content(@dish_1.name)
+      expect(page).to have_content(@dish_1.description)
+    end
+
+    it "shows chef name and ingredients of dish" do
+      visit "/chef/#{@chef.id}/dishes/#{@dish_1.id}"
+
+      expect(page).to have_content(@chef.name)
+      expect(page).to have_content(@mac.name)
+      expect(page).to have_content(@cheese.name)
+    end
   end
 
-  it "shows chef name and ingredients of dish" do
-    visit "/chef/#{@chef.id}/dishes/#{@dish_1.id}"
+  describe "user story 2" do
+    it "shows total calories in dish" do
+      visit "/chef/#{@chef.id}/dishes/#{@dish_1.id}"
 
-    expect(page).to have_content(@chef.name)
-    expect(page).to have_content(@mac.name)
-    expect(page).to have_content(@cheese.name)
+      expect(page).to have_content("#{@dish_1.total_calories} calories")
+    end
   end
   
 end
