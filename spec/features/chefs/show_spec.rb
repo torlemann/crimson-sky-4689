@@ -36,6 +36,6 @@ RSpec.describe 'Chef Show' do
     expect(page).to have_content(@chef.name)
     expect(page).to have_link("All Ingredients")
     click_link "All Ingredients"
-    expect(current_path).to be("/chef/#{@chef.id}/ingredients")
+    expect(current_path).to eq("/chef/#{@chef.id}/ingredients")
   end
 end
